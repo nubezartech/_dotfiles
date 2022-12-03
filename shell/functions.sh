@@ -18,6 +18,75 @@ function recent_dirs() {
 	cd "$(echo "$selected" | sed "s/\~/$escaped_home/")" || echo "Invalid directory"
 }
 
+#########################################################################
+#########################################################################
+####################### FORMATS DEFINITIONS #############################
+#########################################################################
+FNORMAL=0      #estilo. normal
+FBOLD=1        #estilo: negrita
+FDIM=2         #estilo: tenue
+FITALIC=3      #estilo: italic
+FUNDERLINED=4  #estilo: subrayado
+FBLINK=5       #estilo: paradeante
+FINVERTED=7    #estilo: colores invertidos
+FHIDDEN=8      #estilo: oculto *ej. para passwords
+FRESET=0       #estilo: restablecer todo
+#########################################################################
+####################### FOREGROUND COLORS DEFINITIONS #############################
+#########################################################################
+BLACK=30
+RED=31
+GREEN=32
+YELLOW=33
+BLUE=34
+MAGENTA=35
+CYAN=36
+LIGHTGRAY=37
+GRAY=90
+LIGHTRED=91
+LIGHTGREEN=92
+LIGHTYELLOW=93
+LIGHTBLUE=94
+LIGHTMAGENTA=95
+LIGHTCYAN=96
+WHITE=97
+#########################################################################
+####################### BACKGROUND COLORS DEFINITIONS #############################
+#########################################################################
+FBLACK=40
+FRED=41
+FGREEN=42
+FYELLOW=43
+FBLUE=44
+FMAGENTA=45
+FCYAN=46
+FLIGHTGRAY=47
+FGRAY=100
+FLIGHTRED=101
+FLIGHTGREEN=102
+FLIGHTYELLOW=103
+FLIGHTBLUE=104
+FLIGHTMAGENTA=105
+FLIGHTCYAN=106
+FWHITE=107
+#########################################################################
+OKCOLOR="\e[1;${GREEN}m"
+
+BOLDRED="\e[${FBOLD};${GREEN}m"
+BOLDGREEN="\e[${FBOLD};${GREEN}m"
+
+ITALICRED="\e[${FITALIC};${RED}m"
+ITALICGREEN="\e[${FITALIC};${GREEN}m"
+
+BLINKRED="\e[${FBLINK};${RED}m"
+BLINKGREEN="\e[${FBLINK};${GREEN}m"
+
+ENDCOLOR="\e[0m"
+#########  EXAMPLES   ###################################################
+# \e[<style>;<back-color>;<fore-color>
+#########################################################################
+#########################################################################
+#########################################################################
 gclone(){
     if [ "$#" -eq "0" ]; then
         echo -e "\e[1;34mError:\e[0m Debe indicar el repo a copiar. Formato: \e[1;34gclone\e[0m \e[1;35m<org/repo>\e[0m"
