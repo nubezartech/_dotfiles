@@ -18,3 +18,4 @@ jobs:
         pr_body: ":crown: *An automated PR*"
         pr_reviewer: ${{ secrets.GH_PR_REVIEWER }}
         pr_assignee: aabadmo4
+        pr_label: "auto-pr"
