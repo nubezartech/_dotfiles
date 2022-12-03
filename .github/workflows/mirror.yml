@@ -2,7 +2,7 @@ name: Mirror [prod => prod]
 on:
   push:
     branches:
-      - [prod]
+      [prod]
 
 jobs:
   mirror_job:
