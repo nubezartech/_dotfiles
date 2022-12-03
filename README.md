@@ -2,6 +2,16 @@
   .dotfiles created using <a href="https://github.com/CodelyTV/dotly">🌚 dotly</a>
 </h1>
 
+## 🚀 Installation
+
+Execute the [`installer`](installer) from your terminal in order to avoid even having to manually install git!
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/nubezartech/_dotfiles/main/www/scripts/installer)
+```
+
+If you want to check out all the details involved in a migration from a legacy to a new PC, you can checkout the [`installation-guide.md`](doc/installation-guide.md) 
+
 ## Restore your Dotfiles manually
 
 * Install git
