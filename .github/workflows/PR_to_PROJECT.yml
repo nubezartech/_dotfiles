@@ -10,9 +10,9 @@ jobs:
     name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/nubezartech/projects/6
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN_ME }}
           labeled: auto-pr
           label-operator: AND
