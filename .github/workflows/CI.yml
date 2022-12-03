@@ -17,3 +17,4 @@ jobs:
         pr_title: "Pulling ${{ github.ref }} into main from a Push on Dev branch."
         pr_body: ":crown: *An automated PR*"
         pr_reviewer: ${{ secrets.GH_PR_REVIEWER }}
+        pr_assignee: aabadmo4
