@@ -26,27 +26,31 @@ gclone(){
         for i in "$@"
         do
             let CONTADOR=$CONTADOR+1
-            echo "Repo $CONTADOR: $i"
-            gh repo clone $i
-            cd @i
+            echo -e "${COLOR_OK} Repo $CONTADOR: $i ${ENDCOLOR}"
+            gh repo clone $i && cd "$(basename "$i")"
+            #cd $i
             FILE_ENV=.env.example
             if test -f "$FILE_ENV"; then
-                echo "\n $FILE_ENV exist, copying to .env"
+                echo -e "\n \e[47;5;35m    ---> Enviroment Variables File.${ENDCOLOR}"
+                echo -e "\n $FILE_ENV exist, copying to .env."
                 cp .env.example .env
             fi
             FILE_COMPOSER=composer.json
             if test -f "$FILE_COMPOSER"; then
-                echo "$FILE_COMPOSER exist, installing composer dependencies\n"
+                echo -e "\n \e[47;5;35m    ---> Composer project.${ENDCOLOR}"
+                echo -e "\n$FILE_COMPOSER exist, installing composer dependencies."
                 composer install --no-interaction
             fi
             FILE_NPM=package.json
-            if test -f "$FILE_COMPOSER"; then
-                echo "$FILE_COMPOSER exist, installing npm/yarn dependencies\n"
+            if test -f "$FILE_NPM"; then
+                echo -e "\n \e[47;5;35m    ---> NPM/Yarn Project.${ENDCOLOR}"
+                echo -e "\n$FILE_NPM exist, installing npm/yarn dependencies."
                 npm install -y 
             fi
         done
     fi
 }
+
 
 vps(){
     if [ "$#" -eq "0" ]; then
