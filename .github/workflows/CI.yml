@@ -1,0 +1,19 @@
+name: CI [dev->prod]
+on:
+  push:
+    branches:
+      [dev]
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2 
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        github_token: ${{ secrets.ACCES_GITHUB_TOKEN }}
+        pr_title: "Pulling ${{ github.ref }} into main from a Push on Dev branch."
+        pr_body: ":crown: *An automated PR*"
+        pr_reviewer: "aabadmo4"    
