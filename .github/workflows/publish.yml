@@ -35,7 +35,7 @@ jobs:
         git config --global user.email 'adanabad@nubezartech.es'
         echo 'gps'
         git branch -M public
-        git remote set-url --push origin https://aabadmo4:${{ secrets.GH_TOKEN }}@github.com/nubezartech/_dotfiles.git
+        git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/nubezartech/_dotfiles.git
         git push -u origin public
  
   git-sync:
