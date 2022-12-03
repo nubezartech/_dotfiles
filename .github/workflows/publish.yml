@@ -24,17 +24,20 @@ jobs:
         git init
     - name: git add and commit
       run: |
+        git config --global user.name 'Adan N. Abad'
+        git config --global user.email 'adanabad@nubezartech.es'
         echo 'gall-gc'
         git add .
         git commit -m "{{ github.ref }} ··#·· {{ github.repository }} ··#··  {{ github.run_id }}"
     - name: git push
       run: |
+        git config --global user.name 'Adan N. Abad'
+        git config --global user.email 'adanabad@nubezartech.es'
         echo 'gps'
-        git remote add origin git@github.com:nubezartech/_dotfiles.git
         git branch -M public
+        git remote set-url --push origin https://aabadmo4:${{ secrets.GH_TOKEN }}@github.com/nubezartech/_dotfiles.git
         git push -u origin public
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
+ 
   git-sync:
     runs-on: ubuntu-latest
     steps:
