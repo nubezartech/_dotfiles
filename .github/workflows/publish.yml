@@ -1,0 +1,48 @@
+# .github/workflows/publis.yml
+name: Publish code to public repo without git history
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  clear-git-history:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2 
+    - name: removing .git
+      run: |
+        pwd
+        ls
+        echo 'remove_old_git'
+        rm -r -f .git
+    - name: new git init
+      run: |
+        pwd
+        echo 'new_git'
+        git init
+    - name: git add and commit
+      run: |
+        echo 'gall-gc'
+        git add .
+        git commit -m "{{ github.ref }} ··#·· {{ github.repository }} ··#··  {{ github.run_id }}"
+    - name: git push
+      run: |
+        echo 'gps'
+        git remote add origin git@github.com:nubezartech/_dotfiles.git
+        git branch -M public
+        git push -u origin public
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+  git-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "nubezartech/_dotfiles"
+          source_branch: "public"
+          destination_repo: "nubezartech/dotfiles"
+          destination_branch: "dev"
+          ssh_private_key: ${{ secrets.GH_SSH_KEY }}
