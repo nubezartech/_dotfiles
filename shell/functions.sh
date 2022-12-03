@@ -70,7 +70,7 @@ FLIGHTMAGENTA=105
 FLIGHTCYAN=106
 FWHITE=107
 #########################################################################
-OKCOLOR="\e[1;${GREEN}m"
+OKCOLOR="\e[${FBLINK};${GREEN}m"
 
 BOLDRED="\e[${FBOLD};${GREEN}m"
 BOLDGREEN="\e[${FBOLD};${GREEN}m"
