@@ -33,9 +33,11 @@ jobs:
       run: |
         git config --global user.name 'Adan N. Abad'
         git config --global user.email 'adanabad@nubezartech.es'
+        git config --global credentials.username 'aabadmo4'
+        git config --global user.password ${{ secrets.GH_TOKEN_ME }}
         echo 'gps'
         git branch -M public
-        git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/nubezartech/_dotfiles.git
+        git remote add origin https://${{ secrets.GH_TOKEN_ME }}@github.com/nubezartech/_dotfiles.git
         git push -u origin public
  
   git-sync:
